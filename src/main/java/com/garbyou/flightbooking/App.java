@@ -1,4 +1,4 @@
-package com.garbyou;
+package com.garbyou.flightbooking;
 
 /**
  * Hello world!
