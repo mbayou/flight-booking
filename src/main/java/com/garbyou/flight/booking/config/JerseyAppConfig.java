@@ -20,6 +20,6 @@ public class JerseyAppConfig extends ResourceConfig {
     JerseyAppConfig() {
         logger.debug("configure jersey");
 
-        packages("fr.invissys.nemo.web");
+        packages("com.garbyou.flight.booking.web");
     }
 }

@@ -37,7 +37,7 @@ public class MainModule extends AbstractModule {
                 @Override
                 protected void configureServlets() {
                     filter("/*").through(ServletContainer.class);
-                    install(new JpaPersistModule("nemo"));
+                    install(new JpaPersistModule("flightbooking"));
                     filter("/*").through(PersistFilter.class);
                 }
             });
