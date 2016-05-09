@@ -1,5 +1,8 @@
 package com.garbyou.flight.booking.config;
 
+import com.garbyou.flight.booking.Configuration;
+import com.garbyou.flight.booking.persistence.FlightDAO;
+import com.garbyou.flight.booking.persistence.impl.FlightDAOImpl;
 import com.garbyou.flight.booking.web.WebModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
@@ -29,6 +32,9 @@ public class MainModule extends AbstractModule {
 //        logger.debug(" - Nemo log dir  :  {}", System.getProperty("nemo.log.dir"));
 
         try {
+            Configuration mainConfiguration = new Configuration();
+            bind(Configuration.class).toInstance(mainConfiguration);
+
             install(new WebModule());
             bind(ServletContainer.class).toProvider(ServletContainerProvider.class).in(Scopes.SINGLETON);
             bind(JerseyAppConfig.class);
@@ -61,7 +67,7 @@ public class MainModule extends AbstractModule {
      * Performs dao bindings
      */
     private void bindDaos() {
-//        bind(EventDao.class).to(EventDaoImpl.class);
+        bind(FlightDAO.class).to(FlightDAOImpl.class);
     }
 
     /**

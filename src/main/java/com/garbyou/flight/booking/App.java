@@ -1,6 +1,10 @@
 package com.garbyou.flight.booking;
 
 import com.garbyou.flight.booking.config.MainModule;
+import com.garbyou.flight.booking.persistence.FlightDAO;
+import com.garbyou.flight.booking.persistence.domain.Flight;
+import com.garbyou.flight.booking.service.handler.IATADBDatHandler;
+import com.garbyou.flight.booking.service.handler.dto.FlightDTO;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -15,6 +19,9 @@ import org.glassfish.hk2.api.ServiceLocator;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
 import javax.servlet.DispatcherType;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.EnumSet;
 import java.util.logging.LogManager;
 
@@ -25,8 +32,10 @@ public class App {
 
     /**
      * Main (entry point)
-     * @param args
-     * @throws Exception
+     *
+     * @param args argument pass to application
+     *
+     * @throws Exception when an error occurred
      */
     public static void main(final String[] args) throws Exception {
         LogManager.getLogManager().reset();
@@ -53,6 +62,23 @@ public class App {
 
         // You MUST add DefaultServlet or your server will always return 404s,  needed to satisfy servlet spe
         servletContextHandler.addServlet(DefaultServlet.class, "/");
+
+        File iatadbFile = new File(Configuration.getTestResourcesPath() + "flight.dat");
+        InputStream targetStream = new FileInputStream(iatadbFile);
+        IATADBDatHandler handler = new IATADBDatHandler(targetStream);
+        handler.extractData();
+
+        for (FlightDTO dto : handler.getFlights()){
+            Flight flight = new Flight();
+            flight.setDate(dto.getDate());
+            flight.setArrivalTime(dto.getArrivalTime());
+            flight.setArrivalAirportCode(dto.getArrivalAirportCode());
+            flight.setAirLine(dto.getAirLine());
+            flight.setDepartureAirportCode(dto.getDepartureAirportCode());
+            flight.setDepartureTime(dto.getDepartureTime());
+            flight.setId(dto.getFlightId());
+            injector.getInstance(FlightDAO.class).saveOrUpdate(flight);
+        }
 
 
         try {

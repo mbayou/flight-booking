@@ -404,4 +404,18 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile-id>dev</profile-id>
+
+                <resources.location>${project.basedir}/src/main/resources/</resources.location>
+
+            </properties>
+        </profile>
+    </profiles>
 </project>

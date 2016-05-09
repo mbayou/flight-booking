@@ -15,10 +15,10 @@
         <Bug pattern="HE_INHERITS_EQUALS_USE_HASHCODE" />
     </Match>
     <Match>
-        <Class name="~fr.domicalis.domcare.synchro.persistence.domain.*_.*" />
+        <Class name="~com.garbyou.flight.booking.persistence.domain.*_.*" />
     </Match>
     <Match>
         <Bug pattern="NM_SAME_SIMPLE_NAME_AS_SUPERCLASS" />
-        <Class name="~fr.domicalis.domcare.synchro.web.api.*" />
+        <Class name="~com.garbyou.flight.booking.web.api.*" />
     </Match>
 </FindBugsFilter>
