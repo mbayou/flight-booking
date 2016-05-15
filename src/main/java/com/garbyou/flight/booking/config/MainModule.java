@@ -1,9 +1,15 @@
 package com.garbyou.flight.booking.config;
 
 import com.garbyou.flight.booking.Configuration;
+import com.garbyou.flight.booking.persistence.BookingDAO;
 import com.garbyou.flight.booking.persistence.FlightDAO;
+import com.garbyou.flight.booking.persistence.SeatDAO;
+import com.garbyou.flight.booking.persistence.impl.BookingDAOImpl;
 import com.garbyou.flight.booking.persistence.impl.FlightDAOImpl;
+import com.garbyou.flight.booking.persistence.impl.SeatDAOImpl;
+import com.garbyou.flight.booking.service.command.BookingCommandService;
 import com.garbyou.flight.booking.service.command.FlightCommandService;
+import com.garbyou.flight.booking.service.command.impl.BookingCommandServiceImpl;
 import com.garbyou.flight.booking.service.command.impl.FlightCommandServiceImpl;
 import com.garbyou.flight.booking.service.query.FlightQueryService;
 import com.garbyou.flight.booking.service.query.impl.FlightQueryServiceImpl;
@@ -17,6 +23,8 @@ import com.google.inject.servlet.ServletModule;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.awt.print.Book;
 
 /**
  * Main module (all of dependency injection is here)
@@ -72,6 +80,8 @@ public class MainModule extends AbstractModule {
      */
     private void bindDaos() {
         bind(FlightDAO.class).to(FlightDAOImpl.class);
+        bind(BookingDAO.class).to(BookingDAOImpl.class);
+        bind(SeatDAO.class).to(SeatDAOImpl.class);
     }
 
     /**
@@ -80,6 +90,7 @@ public class MainModule extends AbstractModule {
     private void bindServices() {
          bind(FlightQueryService.class).to(FlightQueryServiceImpl.class);
          bind(FlightCommandService.class).to(FlightCommandServiceImpl.class);
+         bind(BookingCommandService.class).to(BookingCommandServiceImpl.class);
     }
 
     /**

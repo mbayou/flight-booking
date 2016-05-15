@@ -1,4 +1,4 @@
-package com.garbyou.flight.booking.service.handler.dto;
+package com.garbyou.flight.booking.service.handler.dto.flight;
 
 import com.garbyou.flight.booking.common.CabinClass;
 

@@ -1,5 +1,7 @@
 package com.garbyou.flight.booking.persistence.domain;
 
+import com.garbyou.flight.booking.common.BookingStatus;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,6 +27,19 @@ public class Booking implements Serializable {
     @OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
     @OrderBy("id ASC")
     private List<Seat> seats = new ArrayList<>();
+
+    /**
+     * Booking status
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private BookingStatus status;
+
+    /**
+     * Booking creation date
+     */
+    @Column(nullable = false)
+    private long creationDate;
 
     /**
      * Gets seats
@@ -60,5 +75,23 @@ public class Booking implements Serializable {
      */
     public int getId() {
         return id;
+    }
+
+    /**
+     * Sets new bookingStatus
+     *
+     * @param bookingStatus new value of bookingStatus.
+     */
+    public void setStatus(final BookingStatus bookingStatus) {
+        this.status = bookingStatus;
+    }
+
+    /**
+     * Gets bookingStatus
+     *
+     * @return bookingStatus
+     */
+    public BookingStatus getStatus() {
+        return status;
     }
 }

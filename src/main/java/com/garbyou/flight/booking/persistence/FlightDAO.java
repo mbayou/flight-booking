@@ -25,4 +25,13 @@ public interface FlightDAO {
      * @return List of flights
      */
     List<Flight> findFlightByQuery(FindFlightQuery query);
+
+    /**
+     * Get flight by ID
+     *
+     * @param id flight identifier
+     *
+     * @return Flight
+     */
+    Flight findById(final int id);
 }

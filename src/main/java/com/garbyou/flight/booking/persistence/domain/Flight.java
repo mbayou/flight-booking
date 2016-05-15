@@ -67,6 +67,25 @@ public class Flight implements Serializable{
     @OrderBy("id ASC")
     private List<Seat> seats = new ArrayList<>();
 
+
+    /**
+     * To sort seat for specific cabin class
+     */
+    @Transient
+    private List<Seat> jSeat = new ArrayList<>();
+
+    /**
+     * To sort seat for specific cabin class
+     */
+    @Transient
+    private List<Seat> ySeat = new ArrayList<>();
+
+    /**
+     * To sort seat for specific cabin class
+     */
+    @Transient
+    private List<Seat> mSeat = new ArrayList<>();
+
     /**
      * Gets airLine
      *
@@ -190,5 +209,74 @@ public class Flight implements Serializable{
      */
     public void setDepartureDate(final long departureDate) {
         this.departureDate = departureDate;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets new id
+     *
+     * @param id new value of id.
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets jSeat
+     *
+     * @return jSeat
+     */
+    @Transient
+    public List<Seat> getJSeat() {
+        return jSeat;
+    }
+
+    /**
+     * Gets mSeat
+     *
+     * @return mSeat
+     */
+    @Transient
+    public List<Seat> getMSeat() {
+        return mSeat;
+    }
+
+    /**
+     * Gets ySeat
+     *
+     * @return ySeat
+     */
+    @Transient
+    public List<Seat> getYSeat() {
+        return ySeat;
+    }
+
+    /**
+     * Method called when client entity is loaded (Because only one method annotated by @PostLoad is authorized)
+     */
+    @PostLoad
+    @SuppressWarnings("unused")
+    private void postLoad() {
+        for (Seat seat : seats) {
+            switch (seat.getCabinClass()){
+                case Y:
+                    ySeat.add(seat);
+                    break;
+                case J:
+                    jSeat.add(seat);
+                    break;
+                case M:
+                    mSeat.add(seat);
+                    break;
+            }
+        }
     }
 }

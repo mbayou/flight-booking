@@ -1,16 +1,21 @@
-package com.garbyou.flight.booking.web.api.model;
+package com.garbyou.flight.booking.web.api.model.flight;
 
 import com.garbyou.flight.booking.common.CabinClass;
 
 /**
- * Created by mbayou on 13/05/2016.
+ * Represent a flight
  */
 public class Flight {
 
     /**
-     * Flight's identifier
+     * Flight's identifier (in database)
      */
     private int id;
+
+    /**
+     * Flight's identifier (in iatadb.dat)
+     */
+    private int flightId;
 
     /**
      * Flight's airline
@@ -263,5 +268,23 @@ public class Flight {
      */
     public String getArrivalDate() {
         return arrivalDate;
+    }
+
+    /**
+     * Gets flightId
+     *
+     * @return flightId
+     */
+    public int getFlightId() {
+        return flightId;
+    }
+
+    /**
+     * Sets new flightId
+     *
+     * @param flightId new value of flightId.
+     */
+    public void setFlightId(final int flightId) {
+        this.flightId = flightId;
     }
 }

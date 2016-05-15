@@ -2,6 +2,7 @@ package com.garbyou.flight.booking.service.query;
 
 import com.garbyou.flight.booking.common.FindFlightQuery;
 import com.garbyou.flight.booking.service.query.dto.FlightDTO;
+import com.garbyou.flight.booking.service.query.dto.FlightDetailDTO;
 
 import java.util.List;
 
@@ -10,5 +11,21 @@ import java.util.List;
  */
 public interface FlightQueryService {
 
-    List<FlightDTO> findFlight(FindFlightQuery query);
+    /**
+     * Retrieves flights with specific query
+     *
+     * @param query specific query
+     *
+     * @return list of flight
+     */
+    List<FlightDTO> findFlights(FindFlightQuery query);
+
+    /**
+     * Get a specific flight information
+     *
+     * @param flightId flight identifier
+     *
+     * @return flight detail
+     */
+    FlightDetailDTO getFlight(int flightId);
 }

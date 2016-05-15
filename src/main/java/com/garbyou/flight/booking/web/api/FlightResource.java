@@ -3,7 +3,9 @@ package com.garbyou.flight.booking.web.api;
 import com.garbyou.flight.booking.common.FindFlightQuery;
 import com.garbyou.flight.booking.service.query.FlightQueryService;
 import com.garbyou.flight.booking.service.query.dto.FlightDTO;
-import com.garbyou.flight.booking.web.api.model.Flight;
+import com.garbyou.flight.booking.service.query.dto.FlightDetailDTO;
+import com.garbyou.flight.booking.web.api.model.flight.Flight;
+import com.garbyou.flight.booking.web.api.model.flight.FlightDetail;
 import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import com.google.inject.persist.Transactional;
@@ -12,10 +14,7 @@ import org.joda.time.format.ISODateTimeFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,16 +67,17 @@ public class FlightResource {
             query.setDepartureDate(ISODateTimeFormat.dateTimeNoMillis().withZoneUTC().parseMillis(departureDate));
         }
         if (!Strings.isNullOrEmpty(flightDay)){
-            query.setFlightDate(ISODateTimeFormat.dateTimeNoMillis().withZoneUTC().parseMillis(flightDay));
+            query.setFlightDate(ISODateTimeFormat.date().withZoneUTC().parseMillis(flightDay));
         }
 
-        List<FlightDTO> dtos = this.flightQueryService.findFlight(query);
+        List<FlightDTO> dtos = this.flightQueryService.findFlights(query);
         List<Flight> flights = new ArrayList<>();
 
         for (FlightDTO dto : dtos){
             Flight flight = new Flight();
             flight.setAirLine(dto.getAirLine());
             flight.setId(dto.getId());
+            flight.setFlightId(dto.getFlightId());
             flight.getJSeatCabinInformation().setQuantity(dto.getJSeatCabinInformation().getQuantity());
             flight.getYSeatCabinInformation().setQuantity(dto.getYSeatCabinInformation().getQuantity());
             flight.getMSeatCabinInformation().setQuantity(dto.getMSeatCabinInformation().getQuantity());
@@ -90,5 +90,43 @@ public class FlightResource {
         }
 
         return flights;
+    }
+
+    /**
+     * Retrieve flight for a specific query
+     *
+     * @param flightId flight identifier in database
+     *
+     * @return List of flight
+     */
+    @GET
+    @Path("/{flightid}")
+    @Produces({MediaType.APPLICATION_JSON + "; charset=UTF-8"})
+    @Transactional
+    public FlightDetail findFlights(@PathParam("flightid") final int flightId) {
+        logger.debug("Get flight detail");
+
+        FlightDetailDTO dto = this.flightQueryService.getFlight(flightId);
+
+        FlightDetail flight = new FlightDetail();
+        flight.setAirLine(dto.getAirLine());
+        flight.setId(dto.getId());
+        flight.setFlightId(dto.getFlightId());
+        flight.getJSeatCabinInformation().setQuantity(dto.getJSeatCabinInformation().getQuantity());
+        flight.getJSeatCabinInformation().setPriceWithoutTaxes(dto.getJSeatCabinInformation().getPriceWithoutTaxes());
+        flight.getJSeatCabinInformation().setTaxesPrice(dto.getJSeatCabinInformation().getTaxesPrice());
+        flight.getYSeatCabinInformation().setQuantity(dto.getYSeatCabinInformation().getQuantity());
+        flight.getYSeatCabinInformation().setPriceWithoutTaxes(dto.getYSeatCabinInformation().getPriceWithoutTaxes());
+        flight.getYSeatCabinInformation().setTaxesPrice(dto.getYSeatCabinInformation().getTaxesPrice());
+        flight.getMSeatCabinInformation().setQuantity(dto.getMSeatCabinInformation().getQuantity());
+        flight.getMSeatCabinInformation().setPriceWithoutTaxes(dto.getMSeatCabinInformation().getPriceWithoutTaxes());
+        flight.getMSeatCabinInformation().setTaxesPrice(dto.getMSeatCabinInformation().getTaxesPrice());
+        flight.setDepartureAirportCode(dto.getDepartureAirportCode());
+        flight.setArrivalAirportCode(dto.getArrivalAirportCode());
+        flight.setArrivalDate(ISODateTimeFormat.dateTimeNoMillis().withZoneUTC().print(dto.getArrivalDate()));
+        flight.setDepartureDate(ISODateTimeFormat.dateTimeNoMillis().withZoneUTC().print(dto.getDepartureDate()));
+
+
+        return flight;
     }
 }

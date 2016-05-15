@@ -7,7 +7,7 @@ import com.garbyou.flight.booking.persistence.domain.Flight;
 import com.garbyou.flight.booking.persistence.domain.Seat;
 import com.garbyou.flight.booking.service.command.FlightCommandService;
 import com.garbyou.flight.booking.service.handler.IATADBDatHandler;
-import com.garbyou.flight.booking.service.handler.dto.FlightDTO;
+import com.garbyou.flight.booking.service.handler.dto.flight.FlightDTO;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.joda.time.DateTime;

@@ -1,6 +1,6 @@
 package com.garbyou.flight.booking.service.handler;
 
-import com.garbyou.flight.booking.service.handler.dto.FlightDTO;
+import com.garbyou.flight.booking.service.handler.dto.flight.FlightDTO;
 import com.google.common.base.Charsets;
 import com.google.common.base.Splitter;
 import org.slf4j.Logger;

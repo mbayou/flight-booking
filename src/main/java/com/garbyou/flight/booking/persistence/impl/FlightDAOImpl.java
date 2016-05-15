@@ -45,6 +45,15 @@ public class FlightDAOImpl implements FlightDAO {
     }
 
     @Override
+    public Flight findById(final int id) {
+        logger.trace("Searching flight with id '{}'", id);
+        Flight ret = this.em.get().find(Flight.class, id);
+        logger.trace("flight type with id '{}' {}", id, ret == null ? "unknown" : "found");
+
+        return ret;
+    }
+
+    @Override
     public List<Flight> findFlightByQuery(final FindFlightQuery query) {
         StringBuilder queryBuilder = new StringBuilder("select f from ");
         queryBuilder.append(Flight.class.getName()).append(" as f ");
