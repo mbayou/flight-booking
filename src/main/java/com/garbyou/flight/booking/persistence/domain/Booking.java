@@ -48,6 +48,9 @@ public class Booking implements Serializable {
     @Embedded
     private Customer customer;
 
+    /**
+     * Default constructor use to set the creation date
+     */
     public Booking() {
         creationDate = DateTime.now().getMillis();
     }

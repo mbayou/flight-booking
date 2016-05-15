@@ -1,6 +1,5 @@
 package com.garbyou.flight.booking.config;
 
-import com.garbyou.flight.booking.Configuration;
 import com.garbyou.flight.booking.persistence.BookingDAO;
 import com.garbyou.flight.booking.persistence.FlightDAO;
 import com.garbyou.flight.booking.persistence.SeatDAO;
@@ -26,8 +25,6 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.awt.print.Book;
-
 /**
  * Main module (all of dependency injection is here)
  */
@@ -42,13 +39,8 @@ public class MainModule extends AbstractModule {
     protected void configure() {
 
         logger.debug("Starting configuration");
-//        logger.debug(" - Java user dir :  {}", System.getProperty("user.dir"));
-//        logger.debug(" - Nemo log dir  :  {}", System.getProperty("nemo.log.dir"));
 
         try {
-            Configuration mainConfiguration = new Configuration();
-            bind(Configuration.class).toInstance(mainConfiguration);
-
             install(new WebModule());
             bind(ServletContainer.class).toProvider(ServletContainerProvider.class).in(Scopes.SINGLETON);
             bind(JerseyAppConfig.class);
@@ -112,7 +104,7 @@ public class MainModule extends AbstractModule {
          * @param app new jersey app
          */
         @Inject
-        ServletContainerProvider(JerseyAppConfig app) {
+        ServletContainerProvider(final JerseyAppConfig app) {
             this.app = app;
         }
 

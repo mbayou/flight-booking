@@ -84,7 +84,8 @@ public class FlightDTO {
 
         /**
          * Sets cabin class
-         * @param cabinClass
+         *
+         * @param cabinClass Seat's cabin class
          */
         public SeatCabinInformation(final CabinClass cabinClass) {
             this.cabinClass = cabinClass;

@@ -31,7 +31,11 @@ public class FindFlightQuery {
      */
     private String departureAirportCode;
 
-
+    /**
+     * Check if filter is set
+     *
+     * @return True means at least one filter is set
+     */
     public boolean isSet(){
         return !Strings.isNullOrEmpty(departureAirportCode)
                 || !Strings.isNullOrEmpty(arrivalAirportCode)

@@ -28,7 +28,7 @@ public class BookingQueryServiceImpl implements BookingQueryService{
     private BookingDAO bookingDAO;
 
     @Override
-    public BookingDTO getBooking(int bookingId) {
+    public BookingDTO getBooking(final int bookingId) {
         logger.debug("Get Booking");
 
         Booking booking = this.bookingDAO.findById(bookingId);

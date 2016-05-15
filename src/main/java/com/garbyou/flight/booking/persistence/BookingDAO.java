@@ -1,10 +1,6 @@
 package com.garbyou.flight.booking.persistence;
 
-import com.garbyou.flight.booking.common.FindFlightQuery;
 import com.garbyou.flight.booking.persistence.domain.Booking;
-import com.garbyou.flight.booking.persistence.domain.Flight;
-
-import java.util.List;
 
 /**
  * Data Access Object of {@link Booking}

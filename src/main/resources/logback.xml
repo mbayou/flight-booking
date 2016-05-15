@@ -6,11 +6,11 @@
         </encoder>
     </appender>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
 
-    <logger name="com.garbyou.flightbooking" level="DEBUG"/>
-    <logger name="org.hibernate.jpa.HibernatePersistenceProvider" level="DEBUG"/>
+    <logger name="com.garbyou.flightbooking" level="INFO"/>
+    <logger name="org.hibernate.jpa.HibernatePersistenceProvider" level="INFO"/>
 
 </configuration>

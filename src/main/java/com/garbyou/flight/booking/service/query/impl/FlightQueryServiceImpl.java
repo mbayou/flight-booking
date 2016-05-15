@@ -66,6 +66,8 @@ public class FlightQueryServiceImpl implements FlightQueryService{
                         case M:
                             mSeatNumber++;
                             break;
+                        default:
+                            throw new UnsupportedOperationException("This cabin class is not yet supported");
                     }
                 }
             }
@@ -80,7 +82,7 @@ public class FlightQueryServiceImpl implements FlightQueryService{
     }
 
     @Override
-    public FlightDetailDTO getFlight(int flightId) {
+    public FlightDetailDTO getFlight(final int flightId) {
         logger.debug("Get flight");
 
         Flight flight = flightDao.findById(flightId);
@@ -125,6 +127,8 @@ public class FlightQueryServiceImpl implements FlightQueryService{
                             mSeatNumber++;
                         }
                         break;
+                    default:
+                        throw new UnsupportedOperationException("This cabin class is not yet supported");
                 }
             }
 

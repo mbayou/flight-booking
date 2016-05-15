@@ -5,7 +5,9 @@ import com.google.inject.Inject;
 import com.google.inject.persist.Transactional;
 import com.google.inject.servlet.RequestScoped;
 
-import javax.ws.rs.*;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.io.FileNotFoundException;
 
@@ -24,7 +26,7 @@ public class AdminResource {
 
     /**
      * Prepare data for application
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException Thrown when iatadb is not found
      */
     @POST
     @Path("/prepare")

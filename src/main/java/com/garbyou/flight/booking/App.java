@@ -19,9 +19,16 @@ import java.util.EnumSet;
 import java.util.logging.LogManager;
 
 /**
- * Hello world!
+ * Application class
  */
-public class App {
+public final class App {
+
+    /**
+     * Default constructor in private
+     * Because this class is utils never instantiated
+     */
+    private App() {
+    }
 
     /**
      * Main (entry point)

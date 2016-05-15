@@ -11,7 +11,7 @@ import java.util.Properties;
  * Contains main configuration
  */
 @Singleton
-public class Configuration {
+public final class Configuration {
     /**
      * Logger
      */
@@ -33,6 +33,13 @@ public class Configuration {
         } catch (IOException e) {
             logger.error("Unable to load config file", e);
         }
+    }
+
+    /**
+     * Default constructor in private
+     * Because this class is utils never instantiated
+     */
+    private Configuration() {
     }
 
     /**

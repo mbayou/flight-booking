@@ -16,6 +16,9 @@ public class JerseyAppConfig extends ResourceConfig {
      */
     private static final Logger logger = LoggerFactory.getLogger(JerseyAppConfig.class);
 
+    /**
+     * Application configuraiton
+     */
     @Inject
     JerseyAppConfig() {
         logger.debug("configure jersey");

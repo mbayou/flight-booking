@@ -46,6 +46,13 @@ public class BookingResource {
     @Inject
     private BookingQueryService bookingQueryService;
 
+    /**
+     * Create a booking
+     *
+     * @param booking booking to create
+     *
+     * @return identifier of created booking
+     */
     @POST
     @Consumes({MediaType.APPLICATION_JSON + "; charset=UTF-8"})
     @Produces({MediaType.APPLICATION_JSON + "; charset=UTF-8"})
@@ -145,7 +152,7 @@ public class BookingResource {
     /**
      * Add booking seat
      * @param bookingId booking identifier
-     * @param booking booking seat quantity to add
+     * @param addBookingSeat booking seat quantity to add
      */
     @POST
     @Path("/{bookingid}/seats")

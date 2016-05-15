@@ -1,22 +1,14 @@
 package com.garbyou.flight.booking.persistence.impl;
 
-import com.garbyou.flight.booking.common.FindFlightQuery;
 import com.garbyou.flight.booking.persistence.BookingDAO;
-import com.garbyou.flight.booking.persistence.FlightDAO;
 import com.garbyou.flight.booking.persistence.domain.Booking;
-import com.garbyou.flight.booking.persistence.domain.Flight;
-import com.garbyou.flight.booking.persistence.domain.Flight_;
-import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import com.google.inject.persist.Transactional;
-import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Provider;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.util.List;
 
 /**
  * Implementation of {@link com.garbyou.flight.booking.persistence.BookingDAO}

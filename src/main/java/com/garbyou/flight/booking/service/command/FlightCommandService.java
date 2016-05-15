@@ -9,7 +9,7 @@ public interface FlightCommandService {
 
     /**
      * Prepare data application
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException thrown when iatadb is not found
      */
     void prepare() throws FileNotFoundException;
 }

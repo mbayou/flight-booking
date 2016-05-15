@@ -16,6 +16,7 @@ import com.garbyou.flight.booking.service.command.dto.booking.UpdateBookingStatu
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.google.inject.persist.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,6 +98,8 @@ public class BookingCommandServiceImpl implements BookingCommandService {
                     bookedSeat.add(bookableSeats.get(i));
                 }
                 break;
+            default:
+                throw new UnsupportedOperationException("This cabin class is not yet supported");
         }
 
         Booking booking = new Booking();
@@ -117,7 +120,8 @@ public class BookingCommandServiceImpl implements BookingCommandService {
     }
 
     @Override
-    public void deleteBooking(int bookingId) {
+    @Transactional
+    public void deleteBooking(final int bookingId) {
         logger.debug("Deletion of booking '{}'", bookingId);
         Booking booking = this.bookingDao.findById(bookingId);
         Preconditions.checkArgument(booking != null, "Booking cannot be find");
@@ -131,7 +135,7 @@ public class BookingCommandServiceImpl implements BookingCommandService {
     }
 
     @Override
-    public void updateBookingStatus(UpdateBookingStatusDTO command) {
+    public void updateBookingStatus(final UpdateBookingStatusDTO command) {
         Preconditions.checkArgument(command != null, "Command cannot be null");
         Preconditions.checkArgument(command.getStatus() != null, "Command status cannot be null");
 
@@ -147,7 +151,7 @@ public class BookingCommandServiceImpl implements BookingCommandService {
     }
 
     @Override
-    public void addBookingSeat(AddBookingSeatDTO command) {
+    public void addBookingSeat(final AddBookingSeatDTO command) {
         Preconditions.checkArgument(command != null, "Command cannot be null");
 
         logger.debug("Add seat to booking '{}'", command.getId());
@@ -194,6 +198,8 @@ public class BookingCommandServiceImpl implements BookingCommandService {
                     bookedSeat.add(bookableSeats.get(i));
                 }
                 break;
+            default:
+                throw new UnsupportedOperationException("This cabin class is not yet supported");
         }
         booking.getSeats().addAll(bookedSeat);
 

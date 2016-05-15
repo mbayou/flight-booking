@@ -160,7 +160,7 @@ public class FlightDetailDTO {
      *
      * @param id new value of id.
      */
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 

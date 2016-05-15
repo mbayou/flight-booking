@@ -7,8 +7,14 @@ import com.google.inject.AbstractModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Web module
+ */
 public class WebModule extends AbstractModule {
 
+    /**
+     * Logger
+     */
     private static final Logger logger = LoggerFactory.getLogger(WebModule.class);
 
     @Override
