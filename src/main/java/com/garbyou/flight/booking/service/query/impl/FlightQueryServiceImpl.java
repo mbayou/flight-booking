@@ -1,13 +1,12 @@
 package com.garbyou.flight.booking.service.query.impl;
 
-import com.garbyou.flight.booking.common.BookingStatus;
 import com.garbyou.flight.booking.common.FindFlightQuery;
 import com.garbyou.flight.booking.persistence.FlightDAO;
 import com.garbyou.flight.booking.persistence.domain.Flight;
 import com.garbyou.flight.booking.persistence.domain.Seat;
 import com.garbyou.flight.booking.service.query.FlightQueryService;
-import com.garbyou.flight.booking.service.query.dto.FlightDTO;
-import com.garbyou.flight.booking.service.query.dto.FlightDetailDTO;
+import com.garbyou.flight.booking.service.query.dto.flight.FlightDTO;
+import com.garbyou.flight.booking.service.query.dto.flight.FlightDetailDTO;
 import com.google.common.base.Preconditions;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -97,7 +96,7 @@ public class FlightQueryServiceImpl implements FlightQueryService{
         dto.setDepartureAirportCode(flight.getDepartureAirportCode());
         dto.setAirLine(flight.getAirLine());
         dto.setId(flight.getId());
-        dto.setFlightId(flight.getId());
+        dto.setFlightId(flight.getFlightId());
 
         int jSeatNumber = 0, ySeatNumber = 0, mSeatNumber = 0;
         float jPriceWhitoutTaxes = 0, yPriceWhitoutTaxes = 0, mPriceWhitoutTaxes = 0;

@@ -1,6 +1,7 @@
 package com.garbyou.flight.booking.persistence.domain;
 
 import com.garbyou.flight.booking.common.BookingStatus;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represent a flight
+ * Represent a booking
  */
 @Entity
 @Table(name = "booking")
 public class Booking implements Serializable {
 
     /**
-     * Seat's identifier
+     * BookingDTO's identifier
      */
     @Id
     @GeneratedValue
@@ -29,17 +30,27 @@ public class Booking implements Serializable {
     private List<Seat> seats = new ArrayList<>();
 
     /**
-     * Booking status
+     * BookingDTO status
      */
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private BookingStatus status;
 
     /**
-     * Booking creation date
+     * BookingDTO creation date
      */
     @Column(nullable = false)
     private long creationDate;
+
+    /**
+     * BookingDTO customer information
+     */
+    @Embedded
+    private Customer customer;
+
+    public Booking() {
+        creationDate = DateTime.now().getMillis();
+    }
 
     /**
      * Gets seats
@@ -93,5 +104,41 @@ public class Booking implements Serializable {
      */
     public BookingStatus getStatus() {
         return status;
+    }
+
+    /**
+     * Sets new creationDate
+     *
+     * @param creationDate new value of creationDate.
+     */
+    public void setCreationDate(final long creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    /**
+     * Gets customer
+     *
+     * @return customer
+     */
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    /**
+     * Sets new customer
+     *
+     * @param customer new value of customer.
+     */
+    public void setCustomer(final Customer customer) {
+        this.customer = customer;
+    }
+
+    /**
+     * Gets creationDate
+     *
+     * @return creationDate
+     */
+    public long getCreationDate() {
+        return creationDate;
     }
 }

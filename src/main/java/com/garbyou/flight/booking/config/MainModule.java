@@ -11,7 +11,9 @@ import com.garbyou.flight.booking.service.command.BookingCommandService;
 import com.garbyou.flight.booking.service.command.FlightCommandService;
 import com.garbyou.flight.booking.service.command.impl.BookingCommandServiceImpl;
 import com.garbyou.flight.booking.service.command.impl.FlightCommandServiceImpl;
+import com.garbyou.flight.booking.service.query.BookingQueryService;
 import com.garbyou.flight.booking.service.query.FlightQueryService;
+import com.garbyou.flight.booking.service.query.impl.BookingQueryServiceImpl;
 import com.garbyou.flight.booking.service.query.impl.FlightQueryServiceImpl;
 import com.garbyou.flight.booking.web.WebModule;
 import com.google.inject.AbstractModule;
@@ -91,6 +93,7 @@ public class MainModule extends AbstractModule {
          bind(FlightQueryService.class).to(FlightQueryServiceImpl.class);
          bind(FlightCommandService.class).to(FlightCommandServiceImpl.class);
          bind(BookingCommandService.class).to(BookingCommandServiceImpl.class);
+         bind(BookingQueryService.class).to(BookingQueryServiceImpl.class);
     }
 
     /**

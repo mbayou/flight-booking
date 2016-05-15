@@ -26,4 +26,10 @@ public interface BookingDAO {
      * @return booking
      */
     Booking findById(final int id);
+
+    /**
+     * Delete booking
+     * @param booking booking to delete
+     */
+    void delete(final Booking booking);
 }

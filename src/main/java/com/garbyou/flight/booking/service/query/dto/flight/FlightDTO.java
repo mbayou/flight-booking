@@ -1,11 +1,11 @@
-package com.garbyou.flight.booking.service.query.dto;
+package com.garbyou.flight.booking.service.query.dto.flight;
 
 import com.garbyou.flight.booking.common.CabinClass;
 
 /**
- * Represent a flight detail
+ * Data transfer obeject for flight
  */
-public class FlightDetailDTO {
+public class FlightDTO {
 
     /**
      * Flight's identifier (in database)
@@ -73,19 +73,8 @@ public class FlightDetailDTO {
         private int quantity;
 
         /**
-         * SeatCabinInformation price (without taxes
-         */
-        private float priceWithoutTaxes;
-
-        /**
-         * SeatCabinInformation taxes price
-         */
-        private float taxesPrice;
-
-
-        /**
          * Sets cabin class
-         * @param cabinClass seat cabin class
+         * @param cabinClass cabin class for seat
          */
         public SeatCabinInformation(final CabinClass cabinClass) {
             this.cabinClass = cabinClass;
@@ -117,42 +106,6 @@ public class FlightDetailDTO {
         public CabinClass getCabinClass() {
             return cabinClass;
         }
-
-        /**
-         * Sets new taxesPrice
-         *
-         * @param taxesPrice new value of taxesPrice.
-         */
-        public void setTaxesPrice(final float taxesPrice) {
-            this.taxesPrice = taxesPrice;
-        }
-
-        /**
-         * Sets new priceWithoutTaxes
-         *
-         * @param priceWithoutTaxes new value of priceWithoutTaxes.
-         */
-        public void setPriceWithoutTaxes(final float priceWithoutTaxes) {
-            this.priceWithoutTaxes = priceWithoutTaxes;
-        }
-
-        /**
-         * Gets taxesPrice
-         *
-         * @return taxesPrice
-         */
-        public float getTaxesPrice() {
-            return taxesPrice;
-        }
-
-        /**
-         * Gets priceWithoutTaxes
-         *
-         * @return priceWithoutTaxes
-         */
-        public float getPriceWithoutTaxes() {
-            return priceWithoutTaxes;
-        }
     }
 
     /**
@@ -160,7 +113,7 @@ public class FlightDetailDTO {
      *
      * @param id new value of id.
      */
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -318,20 +271,20 @@ public class FlightDetailDTO {
     }
 
     /**
-     * Sets new flightId
-     *
-     * @param flightId new value of flightId.
-     */
-    public void setFlightId(final int flightId) {
-        this.flightId = flightId;
-    }
-
-    /**
      * Gets flightId
      *
      * @return flightId
      */
     public int getFlightId() {
         return flightId;
+    }
+
+    /**
+     * Sets new flightId
+     *
+     * @param flightId new value of flightId.
+     */
+    public void setFlightId(final int flightId) {
+        this.flightId = flightId;
     }
 }

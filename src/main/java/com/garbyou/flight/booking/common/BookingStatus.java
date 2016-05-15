@@ -1,17 +1,17 @@
 package com.garbyou.flight.booking.common;
 
 /**
- * Booking status
+ * BookingDTO status
  */
 public enum BookingStatus {
 
     /**
-     * Booking is waiting client confirmation
+     * BookingDTO is waiting client confirmation
      */
     PENDING_CONFIRMATION,
 
     /**
-     * Booking is OK
+     * BookingDTO is OK
      */
     OK;
 }

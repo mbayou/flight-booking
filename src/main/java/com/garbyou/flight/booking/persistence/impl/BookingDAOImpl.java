@@ -49,4 +49,12 @@ public class BookingDAOImpl implements BookingDAO {
 
         return ret;
     }
+
+    @Override
+    @Transactional
+    public void delete(final Booking booking) {
+        long bookingId = booking.getId();
+        this.em.get().remove(booking);
+        logger.debug("Booking '{}' deleted", bookingId);
+    }
 }

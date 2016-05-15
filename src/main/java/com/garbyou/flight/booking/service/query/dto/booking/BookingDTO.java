@@ -1,11 +1,17 @@
-package com.garbyou.flight.booking.web.api.model.booking;
+package com.garbyou.flight.booking.service.query.dto.booking;
 
+import com.garbyou.flight.booking.common.BookingStatus;
 import com.garbyou.flight.booking.common.CabinClass;
 
 /**
- * Represent a booking to save
+ * Represent a booking
  */
-public class SaveBooking {
+public class BookingDTO {
+
+    /**
+     * BookingDTO identifier
+     */
+    private int id;
 
     /**
      * Flight identifier
@@ -21,6 +27,16 @@ public class SaveBooking {
      * Seat quantity booked
      */
     private int quantity;
+
+    /**
+     * BookingDTO price
+     */
+    private float prices;
+
+    /**
+     * BookingDTO status
+     */
+    private BookingStatus status;
 
     /**
      * BookingDTO customer
@@ -134,13 +150,59 @@ public class SaveBooking {
         this.quantity = quantity;
     }
 
+
     /**
-     * Sets new customer
+     * Gets prices
      *
-     * @param customer new value of customer.
+     * @return prices
      */
-    public void setCustomer(final Customer customer) {
-        this.customer = customer;
+    public float getPrices() {
+        return prices;
+    }
+
+    /**
+     * Sets new prices
+     *
+     * @param prices new value of prices.
+     */
+    public void setPrices(final float prices) {
+        this.prices = prices;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return status
+     */
+    public BookingStatus getStatus() {
+        return status;
+    }
+
+    /**
+     * Sets new status
+     *
+     * @param status new value of status.
+     */
+    public void setStatus(final BookingStatus status) {
+        this.status = status;
+    }
+
+    /**
+     * Sets new id
+     *
+     * @param id new value of id.
+     */
+    public void setId(final int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return id
+     */
+    public int getId() {
+        return id;
     }
 
     /**
@@ -150,5 +212,14 @@ public class SaveBooking {
      */
     public Customer getCustomer() {
         return customer;
+    }
+
+    /**
+     * Sets new customer
+     *
+     * @param customer new value of customer.
+     */
+    public void setCustomer(final Customer customer) {
+        this.customer = customer;
     }
 }

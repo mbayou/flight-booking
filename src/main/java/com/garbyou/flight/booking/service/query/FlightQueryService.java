@@ -1,8 +1,8 @@
 package com.garbyou.flight.booking.service.query;
 
 import com.garbyou.flight.booking.common.FindFlightQuery;
-import com.garbyou.flight.booking.service.query.dto.FlightDTO;
-import com.garbyou.flight.booking.service.query.dto.FlightDetailDTO;
+import com.garbyou.flight.booking.service.query.dto.flight.FlightDTO;
+import com.garbyou.flight.booking.service.query.dto.flight.FlightDetailDTO;
 
 import java.util.List;
 

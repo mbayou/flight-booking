@@ -1,11 +1,11 @@
-package com.garbyou.flight.booking.web.api.model.booking;
+package com.garbyou.flight.booking.service.command.dto.booking;
 
 import com.garbyou.flight.booking.common.CabinClass;
 
 /**
  * Represent a booking to save
  */
-public class SaveBooking {
+public class SaveBookingDTO {
 
     /**
      * Flight identifier
@@ -135,20 +135,20 @@ public class SaveBooking {
     }
 
     /**
-     * Sets new customer
-     *
-     * @param customer new value of customer.
-     */
-    public void setCustomer(final Customer customer) {
-        this.customer = customer;
-    }
-
-    /**
      * Gets customer
      *
      * @return customer
      */
     public Customer getCustomer() {
         return customer;
+    }
+
+    /**
+     * Sets new customer
+     *
+     * @param customer new value of customer.
+     */
+    public void setCustomer(final Customer customer) {
+        this.customer = customer;
     }
 }

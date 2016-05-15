@@ -2,8 +2,8 @@ package com.garbyou.flight.booking.web.api;
 
 import com.garbyou.flight.booking.common.FindFlightQuery;
 import com.garbyou.flight.booking.service.query.FlightQueryService;
-import com.garbyou.flight.booking.service.query.dto.FlightDTO;
-import com.garbyou.flight.booking.service.query.dto.FlightDetailDTO;
+import com.garbyou.flight.booking.service.query.dto.flight.FlightDTO;
+import com.garbyou.flight.booking.service.query.dto.flight.FlightDetailDTO;
 import com.garbyou.flight.booking.web.api.model.flight.Flight;
 import com.garbyou.flight.booking.web.api.model.flight.FlightDetail;
 import com.google.common.base.Strings;
@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +94,7 @@ public class FlightResource {
     }
 
     /**
-     * Retrieve flight for a specific query
+     * Get Specific flight
      *
      * @param flightId flight identifier in database
      *
@@ -107,6 +108,9 @@ public class FlightResource {
         logger.debug("Get flight detail");
 
         FlightDetailDTO dto = this.flightQueryService.getFlight(flightId);
+        if (dto == null){
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
 
         FlightDetail flight = new FlightDetail();
         flight.setAirLine(dto.getAirLine());
