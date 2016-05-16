@@ -96,7 +96,7 @@ public class BookingResource {
         booking.setQuantity(dto.getQuantity());
         booking.setStatus(dto.getStatus());
         booking.setFlightId(dto.getFlightId());
-        booking.setPrices(dto.getPrices());
+        booking.setPrice(dto.getPrices());
         booking.setCabinClass(dto.getCabinClass());
         booking.setCustomer(new Booking.Customer());
         booking.getCustomer().setFirstName(dto.getCustomer().getFirstName());

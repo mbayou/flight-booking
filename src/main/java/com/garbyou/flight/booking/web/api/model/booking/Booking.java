@@ -31,7 +31,7 @@ public class Booking {
     /**
      * BookingDTO price
      */
-    private float prices;
+    private float price;
 
     /**
      * BookingDTO status
@@ -152,21 +152,21 @@ public class Booking {
 
 
     /**
-     * Gets prices
+     * Gets price
      *
-     * @return prices
+     * @return price
      */
-    public float getPrices() {
-        return prices;
+    public float getPrice() {
+        return price;
     }
 
     /**
-     * Sets new prices
+     * Sets new price
      *
-     * @param prices new value of prices.
+     * @param price new value of price.
      */
-    public void setPrices(final float prices) {
-        this.prices = prices;
+    public void setPrice(final float price) {
+        this.price = price;
     }
 
     /**
